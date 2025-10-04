@@ -1,6 +1,6 @@
 from typing import Tuple
-from src.models.linear_interpolation import LinearInterpolationModel
-from src.models.stupid_backoff import StupidBackoffModel
+from models.linear_interpolation import LinearInterpolationModel
+from models.stupid_backoff import StupidBackoffModel
 
 def find_optimal_lambdas(train_text: str, dev_text: str) -> Tuple[float, float, float]:
     """

@@ -1,10 +1,10 @@
 
-from src.models.mle import MLEModel
-from src.models.addone import AddOneSmoothedModel
-from src.models.linear_interpolation import LinearInterpolationModel
-from src.models.stupid_backoff import StupidBackoffModel
-from src.generator import TextGenerator
-from src.utils import find_optimal_lambdas, find_optimal_alpha, load_penn_treebank_data
+from models.mle import MLEModel
+from models.addone import AddOneSmoothedModel
+from models.linear_interpolation import LinearInterpolationModel
+from models.stupid_backoff import StupidBackoffModel
+from generator import TextGenerator
+from utils import find_optimal_lambdas, find_optimal_alpha, load_penn_treebank_data
 
 def main():
     """
@@ -52,12 +52,12 @@ def main():
     print(f"Stupid backoff perplexity: {backoff_perplexity}")
 
     # 5. Text Generation
-    print("\n5. Generating Text...")
-    generator = TextGenerator(backoff_model)
-    print("\nGenerated Sentences:")
-    for i in range(5):
-        sentence = generator.generate_text(max_length=20)
-        print(f"{i+1}. {sentence}")
+    # print("\n5. Generating Text...")
+    # generator = TextGenerator(backoff_model)
+    # print("\nGenerated Sentences:")
+    # for i in range(5):
+    #     sentence = generator.generate_text(max_length=20)
+    #     print(f"{i+1}. {sentence}")
 
 if __name__ == "__main__":
     main()
