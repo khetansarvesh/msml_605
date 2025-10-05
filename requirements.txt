@@ -1,0 +1,5 @@
+# Requirements for msml_605 Penn Treebank project
+# All imports in src/ use only Python standard library modules:
+#   os, math, re, collections, typing, random
+# No external dependencies required for current codebase.
+# If you add external libraries (e.g., numpy, torch), list them below
