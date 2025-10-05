@@ -18,6 +18,11 @@ class StupidBackoffModel:
         self.bigram_model = MLEModel(2)
         self.unigram_model = MLEModel(1)
 
+    @property
+    def vocab(self):
+        # Use the trigram model's vocabulary as the overall vocabulary
+        return self.trigram_model.vocab
+
     def train(self, text: str):
         """
         Train all component N-gram models on the same text.
@@ -28,11 +33,12 @@ class StupidBackoffModel:
         self.bigram_model.train(text)
         self.unigram_model.train(text)
 
-    def get_probability(self, ngram: tuple) -> float:
+    def get_probability(self, ngram: tuple, context: tuple = None) -> float:
         """
         Calculate the probability of a trigram using Stupid Backoff.
         Args:
             ngram (tuple): The trigram tuple.
+            context (tuple, optional): Ignored for compatibility.
         Returns:
             float: Probability using backoff strategy.
         """
