@@ -1,7 +1,12 @@
+import os
 from typing import Tuple
 from models.linear_interpolation import LinearInterpolationModel
 from models.stupid_backoff import StupidBackoffModel
 
+def read_file(path):
+    with open(path, 'r', encoding='utf-8') as f:
+        return f.read()
+        
 def find_optimal_lambdas(train_text: str, dev_text: str) -> Tuple[float, float, float]:
     """
     Find the optimal lambda values for linear interpolation using development data.
@@ -51,25 +56,11 @@ def find_optimal_alpha(train_text: str, dev_text: str) -> float:
 
 def load_penn_treebank_data():
     """
-    Load sample Penn Treebank data for demonstration purposes.
+    Load Penn Treebank data from dataset files.
     Returns:
         Tuple[str, str, str]: (train_text, dev_text, test_text)
     """
-    train_text = """
-    The quick brown fox jumps over the lazy dog. The dog was sleeping peacefully. 
-    A cat walked by the sleeping dog. The fox ran away quickly. The dog woke up.
-    The cat and the dog became friends. They played together in the garden.
-    The sun was shining brightly. Birds were singing in the trees.
-    The garden was full of beautiful flowers. The children were playing happily.
-    """
-    dev_text = """
-    The dog barked loudly at the mailman. The mailman delivered the letters.
-    The children were reading books in the library. The books were very interesting.
-    The teacher explained the lesson clearly. The students listened carefully.
-    """
-    test_text = """
-    The weather was perfect today. The birds were flying high in the sky.
-    The students were studying for their exams. The library was very quiet.
-    The teacher gave the students homework. The homework was quite difficult.
-    """
+    train_text = read_file('dataset/ptb.train.txt')
+    dev_text = read_file('dataset/ptb.valid.txt')
+    test_text = read_file('dataset/ptb.test.txt')
     return train_text, dev_text, test_text
